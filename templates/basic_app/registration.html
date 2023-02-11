@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% extends "basic_app/base.html" %}
+<title>Register/Login</title>
+
+{% block body_block %}
+<div class = "jumbotron">
+{% if registered %}
+<h1>Thankyou for register with us</h1>
+{% else %}
+<h3>Fill out the form please</h3>
+
+<!--    We have to use enctype if user is going to upload image-->
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+<!--        Passing user_form which we have mentioned in form.py as class of project folder i.e django_level5-->
+        {{ user_form.as_p }}
+        <!--        Passing profile_form which we have mentioned in form.py as class of project folder i.e django_level5-->
+        {{ profile_form.as_p }}
+        <input type="submit" name = "" value="Register">
+    </form>
+    {% endif %}
+    </div>
+{% endblock %}
